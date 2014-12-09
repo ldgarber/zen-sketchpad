@@ -1,0 +1,85 @@
+body {
+	background-color: #f7f1c0; 
+}
+
+#container { 
+	background-color: #b80a0a; 
+	position: relative; 
+	height: 92vh; 
+	width: 80vw; 
+	margin: auto; 
+	box-shadow: border; 
+	box-shadow: -10px 10px 31px 10px rgba(0,0,0,0.75);
+	border-right: 13px solid #810707; 
+	border-bottom: 15px solid #810707; 
+	border-left: 13px solid #810707; 
+	border-top: 5px solid #810707; 
+	text-align: center; 
+}
+
+#top {
+	font-family: Lobster, cursive; 
+	font-size: 40pt; 
+	color: #f7f1c0; 
+	position: relative; 
+	padding: 10px;  
+	width: 60%; 
+	margin: auto; 
+	margin-top: 5px; 
+	margin-bottom: 5px; 
+	text-align: center; 
+}
+	
+
+#sketchpad {
+/* keep this in mind! center multiple divs. goes with .cell class */
+	height: 65%; 
+	width: 80%; 
+	padding: 20px; 
+	margin: auto; 
+	text-align: center; 
+	white-space: nowrap; 
+	line-height: 12px; 
+	overflow: hidden; 
+	position: relative; 
+	background-color: #888; 
+	/* border: 1px inset #333; */
+	border-radius: 20px;
+	box-shadow: inset 1px 1px 10px #333; 
+}
+
+#grid {  
+	margin: auto; 
+}
+
+.cell {
+	display: inline-block; 
+	vertical-align: middle;  
+	/* border: 1px solid #999; */
+	position: relative;  
+	background-color: #999;
+	float: left; 
+}
+
+
+.cell:hover {
+	cursor: pointer; 
+} 
+
+#bottom {
+	width: 95%; 
+	height: 15%; 
+	margin-top: 20px; 
+}
+
+button {
+	padding: 3px; 
+	margin: 5px; 
+	position: relative; 
+	border-radius: 7px; 
+	cursor: pointer; 
+}; 
+
+.active {
+	background-color: #fff; 
+}
