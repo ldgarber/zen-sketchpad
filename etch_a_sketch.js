@@ -1,15 +1,14 @@
 <!-- 
 	//create divs
-		$(function(){
-			//default
-			createGrid(10); 
+	$(function(){
+		//default
+		createGrid(10); 
 			
-			$(".cell").mouseover(function(){
+		$(".cell").mouseover(function(){
    			 	$(this).css('background-color', '#333'); 
 			}); 
 			
-			//resolution
-			$("#resolution").click(function(){
+		$("#resolution").click(function(){ 
 				var res = prompt("What resolution would you like? (from 1 - 50)"); 
 				if (isNaN(res) || res < 1 || res > 60) {return;}
 				else {
@@ -20,65 +19,96 @@
 				}
 			}); 
 			
-			//regular button
-			$("#regular").click(function(){
+		//regular button
+		$("#regular").click(function(){
 				$(".cell").mouseover(function(){
    			 		$(this).css('background-color', '#333'); 
 				}); 
 			}); 
 			
-			//a random color (one at a time)
-			$("#changeColor").click(function(){
+		//a random color (one at a time)
+		$("#changeColor").click(function(){
 				var randomColor="#" + Math.floor(Math.random()*16777215).toString(16); 
 				$(".cell").mouseover(function(){
 					$(this).css("background-color", randomColor); 
 				}); 
 			}); 
 			
-			//random colors button
-			$("#randomColors").click(function(){
+		//random colors button
+		$("#randomColors").click(function(){
 				$(".cell").mouseover(function(){
 					var randomColor="#" + Math.floor(Math.random()*16777215).toString(16); 
 					$(this).css("background-color", randomColor); 
 				}); 
 			}); 
 			
-			//eraser
-			$("#eraser").click(function(){
+			/*
+			$("#opacity").click(function(){
+				$(".cell").mouseover(function(){
+					var current = $(this).css("opacity")
+					current = current - 0.1; 
+					$(this).css("opacity", current); 
+				}); 
+			}); */
+			
+		//eraser
+		$("#eraser").click(function(){
 				$(".cell").off("mouseover"); 
 				$(".cell").mousedown(function(){
+					$(this).css('opacity', "1"); 
    			 		$(this).css('background-color', '#999'); 
 				}); 
 			}); 
 			
-			//start over button
-			$("#reset").click(function(){
+		//start over button
+		$("#reset").click(function(){
 				$(".cell").css('background-color', '#999'); 
+				$('.cell').css('opacity', '1'); 
 			}); 
 			
+		var trailClicked = false; 	
+		$("#trail").click(function(){
+			if (trailClicked == false) {
+				$(".cell").mouseleave(function(){
+					$(this).fadeTo(500, 0, function(){
+						$(this).css("background-color", "#999"); 
+						$(this).css("opacity", "1"); 
+					}); 
+				}); 
+				trailClicked = true;  
+			}
+			else {
+				$(".cell").off("mouseleave"); 
+				trailClicked = false; 	
+			}; 
 		}); 
 			
-		function createGrid(v) {
-			$(".cell").remove(); 
-			if ($("#sketchpad").height() >= $("#sketchpad").width() ) {
-				var cell_size = $("#sketchpad").width() / v; 
-			} else { 
-				var cell_size = $("#sketchpad").height() / v; 
+	});  
+
+
+	function createGrid(v) {
+		$(".cell").remove(); 
+		if ($("#sketchpad").height() >= $("#sketchpad").width() ) {
+			var cell_size = $("#sketchpad").width() / v; 
+		} else { 
+			var cell_size = $("#sketchpad").height() / v; 
+		}
+		var grid_size = cell_size *v; 
+			
+		$("#grid").css('height', grid_size); 
+		$("#grid").css('width', grid_size);
+		
+		for (var i = 0; i < v; i++) {
+			for (var x = 0; x < v; x++) {
+				$("#grid").append("<div class='cell'></div>"); 
 			}
-			var grid_size = cell_size *v; 
+		}
 			
-			$("#grid").css('height', grid_size); 
-			$("#grid").css('width', grid_size);
-			
-			for (var i = 0; i < v; i++) {
-				for (var x = 0; x < v; x++) {
-					$("#grid").append("<div class='cell'></div>"); 
-				}
-			}
-			
-			$(".cell").css('height', cell_size); 
-			$(".cell").css('width', cell_size); 
-		}; 
+		$(".cell").css('height', cell_size); 
+		$(".cell").css('width', cell_size); 
+	}; 
+		
+		//still would like to have a button pressed class - show that trail is on or off. 
 		
 		
 		/*

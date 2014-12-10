@@ -78,8 +78,11 @@ button {
 	position: relative; 
 	border-radius: 7px; 
 	cursor: pointer; 
+	outline: none; 
 }; 
 
-.active {
-	background-color: #fff; 
+.clicked {
+	background-color: #aaaeee; 
+	box-shadow: none; 
+	top: 2px; 
 }
