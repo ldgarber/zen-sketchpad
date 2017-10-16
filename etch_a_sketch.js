@@ -10,7 +10,7 @@
 			
 		$("#resolution").click(function(){ 
 				var res = prompt("What resolution would you like? (from 1 - 100)"); 
-				if (isNaN(res) || res < 1 || res > 0) {return;}
+				if (isNaN(res) || res < 1 || res > 100) {return;}
 				else {
 					createGrid(res); 
 					$(".cell").mouseover(function(){
