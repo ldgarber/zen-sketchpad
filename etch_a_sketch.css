@@ -35,7 +35,7 @@ body {
 /* keep this in mind! center multiple divs. goes with .cell class */
 	height: 65%; 
 	width: 80%; 
-	padding: 20px; 
+	/*padding: 20px;*/ 
 	margin: auto; 
 	text-align: center; 
 	white-space: nowrap; 

@@ -2,15 +2,15 @@
 	//create divs
 	$(function(){
 		//default
-		createGrid(10); 
+		createGrid(25); 
 			
 		$(".cell").mouseover(function(){
    			 	$(this).css('background-color', '#333'); 
 			}); 
 			
 		$("#resolution").click(function(){ 
-				var res = prompt("What resolution would you like? (from 1 - 50)"); 
-				if (isNaN(res) || res < 1 || res > 60) {return;}
+				var res = prompt("What resolution would you like? (from 1 - 100)"); 
+				if (isNaN(res) || res < 1 || res > 0) {return;}
 				else {
 					createGrid(res); 
 					$(".cell").mouseover(function(){
@@ -88,7 +88,7 @@
 
 	function createGrid(v) {
 		$(".cell").remove(); 
-		if ($("#sketchpad").height() >= $("#sketchpad").width() ) {
+		if ($("#sketchpad").height() <= $("#sketchpad").width() ) {
 			var cell_size = $("#sketchpad").width() / v; 
 		} else { 
 			var cell_size = $("#sketchpad").height() / v; 
